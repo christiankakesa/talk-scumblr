@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Scumblr: Searches internet for security "nuggets" (credentials, hacking discussions)</title>
+
+		<meta name="description" content="Scumblr: Searches internet for security 'nuggets' (credentials, hacking discussions)">
+		<meta name="author" content="Christian Kakesa">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+        <section>
+          <p><img width="24%" height="24%" data-src="images/scumblr.png" /> <img width="33%" height="33%" data-src="images/netflix-oss.jpeg" /></p>
+          <p>Scumblr: Searches internet for security "nuggets" (credentials, hacking discussions)</p>
+          <blockquote cite="http://www.kakesa.net">
+						&ldquo;I use it in order to monitor everything about technology.&rdquo;
+					</blockquote>
+          <p>
+						<small>Christian Kakesa - <a href="http://www.kakesa.net">kakesa.net</a> / <a href="http://twitter.com/christiankakesa">@christiankakesa</a></small>
+					</p>
+        </section>
+
+				<section>
+					<h1>Agenda</h1>
+					<ul>
+            <li class="fade-in">What is Scumblr?</li>
+						<li class="fragment fade-in">How simple is Scumblr?</li>
+            <li class="fragment fade-in">A quick demo: <a href="https://scumblr.kakesa.net">scumblr.kakesa.net</a></li>
+          </ul>
+				</section>
+
+        <section>
+          <section>
+            <h2>What is Scumblr?</h2>
+          </section>
+
+					<section>
+            <h3>Netflix use Scumblr against...</h3>
+						<ul>
+							<li class="fade-in">Credential dumps</li>
+							<li class="fragment fade-in">Netflix vulnerabilities</li>
+							<li class="fragment fade-in">Netflix streaming links on <em>Google search</em></li>
+							<li class="fragment fade-in">Tracking <em>DDOS</em> attacks</li>
+							<li class="fragment fade-in">Probably more...</li>
+						</ul>
+          </section>
+
+					<section data-transition="fade-in slide" data-autoslide="400">
+						<h3>Scumblr principles</h3>
+						<img data-src="/images/scumblr_capabilities_01.png" />
+					</section>
+					<section data-transition="fade-in slide">
+						<h3>Scumblr principles : Searches</h3>
+						<img data-src="/images/scumblr_capabilities_02.png" />
+					</section>
+					<section data-transition="fade-in slide">
+						<h3>Scumblr principles : Results</h3>
+						<img data-src="/images/scumblr_capabilities_03.png" />
+					</section>
+					<section data-transition="fade-in slide">
+						<h3>About Sketchy and Worflowable <em>Ruby</em> gem</h3>
+						<ul>
+							<li class="fade-in">Sketchy (PhantomJS web API in Python)
+							  <ul>
+									<li>Safer way to visit malicious web sites</li>
+							    <li>Monitor changes in web pages</li>
+								</ul>
+						  </li>
+							<li class="fragment fade-in">Worflowable: a <em>Ruby</em> gem
+							  <ul>
+									<li>manage workflows</li>
+									<li>trigger customizable automated actions</li>
+								</ul>
+						  </li>
+						</ul>
+					</section>
+        </section>
+
+        <section>
+          <section>
+            <h2>How Scumblr works?</h2>
+          </section>
+
+					<section data-transition="fade-in slide" data-autoslide="400">
+            <h3>Start with the admin user</h3>
+						<img data-src="/images/scumblr_architecture_01.png" />
+						<aside class="notes">
+							<p>You can create other users or just start using it</p>
+						</aside>
+          </section>
+					<section data-transition="fade-in slide">
+            <h3>Scumblr is a RubyOnRails app</h3>
+						<img data-src="/images/scumblr_architecture_02.png" />
+						<aside class="notes">
+							<p>Rails 4.0.9</p>
+							<p>Ruby 2.3.0</p>
+							<p>PostgreSQL database</p>
+							<p>Sidekiq with Redis as datastore for background jobs</p>
+							<p>Workflow with Workflowable gem</p>
+						</aside>
+          </section>
+					<section data-transition="fade-in slide">
+            <h3>Searches return results from providers</h3>
+						<img data-src="/images/scumblr_architecture_03.png" />
+						<aside class="notes">
+							<p>Many providers</p>
+							<p>It's easy to develop your own search provider</p>
+							<p>I fix the Facebook search provider with last FB API</p>
+						</aside>
+          </section>
+					<section data-transition="fade-in slide">
+            <h3>Background results use Sketchy REST API</h3>
+						<img data-src="/images/scumblr_architecture_04.png" />
+						<aside class="notes">
+							<p>Autonomous app</p>
+							<p>REST API with a good architecture: asynchronous</p>
+						</aside>
+          </section>
+				</section>
+
+				<section data-transition="fade-in slide" data-autoslide="500">
+					<h2>My Scumblr deployment</h2>
+					<img data-src="/images/scumblr_my_own_deployment_01.png" />
+				</section>
+				<section data-transition="fade-in slide" data-autoslide="500">
+					<h2>My Scumblr deployment</h2>
+					<img data-src="/images/scumblr_my_own_deployment_02.png" />
+				</section>
+				<section data-transition="fade-in slide" data-autoslide="500">
+					<h2>My Scumblr deployment</h2>
+					<img data-src="/images/scumblr_my_own_deployment_03.png" />
+				</section>
+				<section data-transition="fade-in slide">
+					<h2>My Scumblr deployment</h2>
+					<img data-src="/images/scumblr_my_own_deployment_04.png" />
+					<aside class="notes">
+						<ul>
+							<li>Scumblr is deloyed on top of MESOS</li>
+							<li>The postgreSQL database is in an other machine</li>
+							<li>The redis key is used on a existing Redis instance with unique namespace</li>
+						</ul>
+						<ul>
+							<li>Sketchy is deloyed on top of MESOS</li>
+							<li>The PostgreSQL database and Redis datastore are located locally in the same MESOS container</li>
+						</ul>
+					</aside>
+				</section>
+
+        <section>
+            <h2><a href="https://scumblr.kakesa.net" target="_blank">A quick demo</a></h2>
+						<img data-src="/images/scumblr_screenshot_demo.png" />
+						<aside class="notes">
+							<ul>
+								<li><strong>Searches</strong>
+									<ul>
+										<li>Create search</li>
+										<li>Search could be run directly from the back-office or by backgroung jobs (rake task)</li>
+									  <li>Every 4 hours Chronos run the "sync_all" rake task</li>
+									</ul>
+								</li>
+								<li><strong>The administration menu</strong>
+								  <ul>
+										<li>Create users</li>
+										<li>Create workflows</li>
+										<li>Create workflow flags (associate results with workflows)</li>
+										<li>Create results statuses</li>
+									</ul>
+								</li>
+								<li><strong>Results</strong>
+									<ul>
+										<li>Background task populate the results</li>
+										<li>Screenshots are updated by asking Sketchy asynchronously. Directly from the administration interface or by rake task</li>
+										<li>It's possible to create a result: adding a scoop to a workflow</li>
+										<li>It's a good idea to save filters for efficiency. Got to "saved filters" menu and choose your filter</li>
+									  <li></li>
+									</ul>
+								</li>
+								<li><strong>Dashboard</strong></li>
+								<li><strong>Finally I use Scumblr for technical and personnal thinkgs and security reasons</strong>
+								  <ul>
+										<li>C++</li>
+										<li>Tizen</li>
+										<li>Kiqli</li>
+										<li>Congopro</li>
+										<li>Kakesa</li>
+									</ul>
+								</li>
+							</ul>
+						</aside>
+        </section>
+
+        <section>
+            <h2>?</h2>
+						<ul class="right">
+							<li>Scumblr wiki: <a href="http://kiq.li/1Hf2">kiq.li/1Hf2</a></li>
+							<li>Scumblr GitHub (source code): <a href="http://kiq.li/1Hf3">kiq.li/1Hf3</a></li>
+							<li>Scumblr Gitter (chat): <a href="http://kiq.li/1Hf4">kiq.li/1Hf4</a></li>
+						</ul>
+            <p>
+  						<small>Christian Kakesa - <a href="http://www.kakesa.net">kakesa.net</a> / <a href="http://twitter.com/christiankakesa">@christiankakesa</a></small>
+  					</p>
+        </section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				width: 1360,
+		    height: 768,
+
+		    // Factor of the display size that should remain empty around the content
+		    margin: 0.1,
+
+		    // Bounds for smallest/largest possible scale to apply to content
+		    minScale: 0.2,
+		    maxScale: 1.1,
+
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'concave', // none/fade/slide/convex/concave/zoom
+
+        // multiplex: {
+          // Example values. To generate your own, see the socket.io server instructions.
+          // secret: null, // Obtained from the socket.io server. Gives this (the master) control of the presentation
+          //id: '1ea875674b17ca76', // Obtained from socket.io server
+          //url: 'revealjs-51546.onmodulus.net:80' // Location of socket.io server
+        // },
+
+        math: {
+          mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+          config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+        },
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+          { src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+          { src: 'plugin/multiplex/master.js', async: true },
+          { src: 'plugin/multiplex/client.js', async: true },
+          // and if you want speaker notes
+          { src: 'plugin/notes-server/client.js', async: true },
+          { src: 'plugin/math/math.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
