@@ -1,6 +1,6 @@
 # Scumblr: Searches internet for security "nuggets" (credentials, hacking discussions)
 
-This is a quick presentation of **Scumblr**, a tool used by Netflix to prevent: credential dumps, Netflix vulnerabilities, DDOS attacks, ...
+This is a quick presentation of **Scumblr**, a tool used by **Netflix** to prevent: credential dumps, Netflix vulnerabilities, DDOS attacks, ...
 
 
 ## License
